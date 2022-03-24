@@ -1,0 +1,17 @@
+.profile__personal-data {
+  max-width: 336px;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  align-items: baseline;
+  column-gap: 19px;
+  row-gap: 7px;
+}
+
+@media screen and (max-width: 767px) {
+  .profile__personal-data {
+    justify-content: center;
+    column-gap: 10px;
+    row-gap: 14px;
+  }
+}
