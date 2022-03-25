@@ -7,3 +7,10 @@
   row-gap: 20px;
   flex-wrap: wrap;
 }
+
+
+@media screen and (max-width: 1020px) {
+  .places__list {
+    justify-content: center;
+  }
+}

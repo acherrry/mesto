@@ -1,11 +1,11 @@
 .profile__personal-data {
   max-width: 336px;
-  display: flex;
-  flex-wrap: wrap;
-  align-content: center;
   align-items: baseline;
+  display: grid;
+  grid-template-columns: repeat(2, max-content);
+  align-content: center;
   column-gap: 19px;
-  row-gap: 7px;
+  row-gap: 9px;
 }
 
 @media screen and (max-width: 767px) {
@@ -13,5 +13,6 @@
     justify-content: center;
     column-gap: 10px;
     row-gap: 14px;
+    text-align: center;
   }
 }

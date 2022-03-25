@@ -12,7 +12,7 @@
 }
 
 .place__like-button:hover {
-  opacity: 0.6;
+  opacity: 0.5;
 }
 
 @media screen and (max-width: 467px) {
