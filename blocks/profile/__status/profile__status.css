@@ -11,5 +11,7 @@
   .profile__status {
     font-size: 14px;
     line-height: 1.21;
+    max-width: 282px;
+    text-align: center;
   }
 }

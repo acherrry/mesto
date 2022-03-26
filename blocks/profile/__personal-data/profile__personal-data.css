@@ -1,5 +1,4 @@
 .profile__personal-data {
-  max-width: 336px;
   align-items: baseline;
   display: grid;
   grid-template-columns: repeat(2, max-content);
@@ -8,11 +7,17 @@
   row-gap: 9px;
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 821px) {
   .profile__personal-data {
     justify-content: center;
     column-gap: 10px;
     row-gap: 14px;
     text-align: center;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .profile__personal-data {
+    row-gap: 7px;
   }
 }
