@@ -24,4 +24,4 @@
 
 **GitHub Pages**
 
-* [Ссылка на GitHub Pages](https://acherrry.github.io/russian-travel/)
+* [Ссылка на GitHub Pages](https://acherrry.github.io/mesto/)
