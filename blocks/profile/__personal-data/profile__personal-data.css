@@ -9,7 +9,6 @@
 
 @media screen and (max-width: 821px) {
   .profile__personal-data {
-    justify-content: center;
     column-gap: 10px;
     row-gap: 14px;
     text-align: center;

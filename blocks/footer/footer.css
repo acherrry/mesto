@@ -6,13 +6,13 @@
 
 @media screen and (max-width: 1023px) {
   .footer {
-    max-width: calc(100% - (70px*2));
+    margin: 0 70px;
   }
 }
 
-@media screen and (max-width: 467px) {
+@media screen and (max-width: 424px) {
   .footer {
-  padding: 48px 0 36px;
-  max-width: 282px;
+  padding: 50px 0 36px;
+  margin: 0 19px;
   }
 }
