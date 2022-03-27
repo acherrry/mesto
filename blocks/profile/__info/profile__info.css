@@ -3,7 +3,7 @@
   gap: 30px;
 }
 
-@media screen and (max-width: 821px) {
+@media screen and (max-width: 980px) {
   .profile__info {
     gap: 26px;
     flex-direction: column;

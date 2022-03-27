@@ -3,18 +3,29 @@
   font-weight: 400;
   font-size: 18px;
   line-height: 1.22;
-  word-wrap: break-word;
-  max-width: 336px;
+  max-width: 460px;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
 }
 
-@media screen and (max-width: 467px) {
+@media screen and (max-width: 980px) {
+  .profile__status {
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 650px) {
   .profile__status {
     font-size: 14px;
     line-height: 1.21;
-    max-width: 282px;
     text-align: center;
+    max-width: 336px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .profile__status {
+    max-width: 240px;
   }
 }

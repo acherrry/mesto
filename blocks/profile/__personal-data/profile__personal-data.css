@@ -7,16 +7,16 @@
   row-gap: 9px;
 }
 
-@media screen and (max-width: 821px) {
+@media screen and (max-width: 981px) {
   .profile__personal-data {
-    column-gap: 10px;
-    row-gap: 14px;
     text-align: center;
+    justify-items: center;
   }
 }
 
 @media screen and (max-width: 320px) {
   .profile__personal-data {
     row-gap: 7px;
+    column-gap: 10px;
   }
 }
