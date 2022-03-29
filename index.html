@@ -20,11 +20,11 @@
           <img class="profile__img" src="./images/profile/__img/profile-img.jpg" alt="Фотография пользователя">
           <div class="profile__personal-data">
             <h1 class="profile__name">Жак-Ив Кусто</h1>
-            <button class="profile__edit-button"></button>
+            <button class="profile__edit-button" type="button" aria-label="Редактировать"></button>
             <p class="profile__status">Исследователь океана</p>
           </div>
         </div>
-        <button class="profile__add-button"></button>
+        <button class="profile__add-button" type="button" aria-label="Добавить"></button>
       </section>
 
       <section class="places">
@@ -32,48 +32,48 @@
           <li class="place">
             <img class="place__img" src="./images/place/__img/place-krym.jpg" alt="Крым, тропа Голицина">
             <div class="place__info">
-              <h3 class="place__name">Крым</h3>
-              <button class="place__like-button"></button>
+              <h2 class="place__name">Крым</h2>
+              <button class="place__like-button place__like-button_active" type="button" aria-label="Выразить оценку - нравится"></button>
             </div>
           </li>
 
           <li class="place">
             <img class="place__img" src="./images/place/__img/place-kareliya.jpg" alt="Водопад в Сегеже">
             <div class="place__info">
-              <h3 class="place__name">Карелия</h3>
-              <button class="place__like-button"></button>
+              <h2 class="place__name">Карелия</h2>
+              <button class="place__like-button place__like-button_active" type="button" aria-label="Выразить оценку - нравится"></button>
             </div>
           </li>
 
           <li class="place">
             <img class="place__img" src="./images/place/__img/place-teriberka.jpg" alt="Териберка, Баренцево море">
             <div class="place__info">
-              <h3 class="place__name">Териберка</h3>
-              <button class="place__like-button"></button>
+              <h2 class="place__name">Териберка</h2>
+              <button class="place__like-button place__like-button_active" type="button" aria-label="Выразить оценку - нравится"></button>
             </div>
            </li>
 
           <li class="place">
             <img class="place__img" src="./images/place/__img/place-dagestan.jpg" alt="Дагестан">
             <div class="place__info">
-             <h3 class="place__name">Дагестан</h3>
-             <button class="place__like-button"></button>
+             <h2 class="place__name">Дагестан</h2>
+             <button class="place__like-button place__like-button_active" type="button" aria-label="Выразить оценку - нравится"></button>
             </div>
          </li>
 
          <li class="place">
            <img class="place__img" src="./images/place/__img/place-pyatigorsk.jpg" alt="Пятигорск, гора Бештау">
            <div class="place__info">
-             <h3 class="place__name">Пятигорск</h3>
-            <button class="place__like-button"></button>
+             <h2 class="place__name">Пятигорск</h2>
+            <button class="place__like-button place__like-button_active" type="button" aria-label="Выразить оценку - нравится"></button>
            </div>
           </li>
 
           <li class="place">
             <img class="place__img" src="./images/place/__img/place-dzhily-su.jpg" alt="Карачаево-Черкесия, местечко Джилы-Су">
             <div class="place__info">
-              <h3 class="place__name">Карачаево-Черкесия</h3>
-              <button class="place__like-button"></button>
+              <h2 class="place__name">Карачаево-Черкесия</h2>
+              <button class="place__like-button place__like-button_active" type="button" aria-label="Выразить оценку - нравится"></button>
             </div>
           </li>
          </ul>
@@ -87,11 +87,11 @@
     <div class="popup">
       <div class="popup__content">
         <button class="popup__close" type="button"></button>
-        <h3 class="popup__title">Редактировать профиль</h3>
-        <form class="popup__form">
-          <input class="popup__input" type="text" value="text" id="user-name" name="user-name" placeholder="Имя">
-          <input class="popup__input" type="text" value="text" id="user-info" name="user-info" placeholder="О себе">
-          <button class="popup__save" type="submit">Сохранить</button>
+        <h2 class="popup__title">Редактировать профиль</h2>
+        <form class="popup__form" name="editprofile">
+          <input class="popup__input" type="text" value="text" id="user-name" name="user-name" required placeholder="Имя">
+          <input class="popup__input" type="text" value="text" id="user-info" name="user-info" required placeholder="О себе">
+          <button class="popup__save" type="submit" aria-label="Сохранить">Сохранить</button>
         </form>
       </div>
     </div>

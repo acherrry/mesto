@@ -7,15 +7,11 @@ let jobInput = document.querySelector('#user-info');
 let profileName = document.querySelector('.profile__name');
 let profileStatus = document.querySelector('.profile__status');
 
-editBtn.addEventListener('click', togglePopup);
-closeBtn.addEventListener('click', togglePopup);
-formElement.addEventListener('submit', formSubmitHandler);
-
 function togglePopup() {
-  popupWindow.classList.toggle('popup_is-active');
-  
   nameInput.value = profileName.textContent;
   jobInput.value = profileStatus.textContent;
+
+  popupWindow.classList.toggle('popup_is-active');
 }
 
 function formSubmitHandler (evt) {
@@ -26,4 +22,8 @@ function formSubmitHandler (evt) {
 
   togglePopup();
 }
+
+editBtn.addEventListener('click', togglePopup);
+closeBtn.addEventListener('click', togglePopup);
+formElement.addEventListener('submit', formSubmitHandler);
 

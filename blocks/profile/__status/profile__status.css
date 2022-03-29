@@ -12,6 +12,7 @@
 @media screen and (max-width: 980px) {
   .profile__status {
     text-align: center;
+    padding-left: 42px;
   }
 }
 
@@ -21,6 +22,7 @@
     line-height: 1.21;
     text-align: center;
     max-width: 336px;
+    padding-left: 25px;
   }
 }
 

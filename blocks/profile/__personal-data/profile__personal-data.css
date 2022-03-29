@@ -16,7 +16,8 @@
 
 @media screen and (max-width: 320px) {
   .profile__personal-data {
+    align-items: center;
     row-gap: 7px;
-    column-gap: 10px;
+    column-gap: 11px;
   }
 }

@@ -4,8 +4,8 @@
   font-size: 14px;
   line-height: 1.21;
   color: #000000;
-  margin-top: 31px;
-  padding: 0 0 8px;
+  margin-top: 23px;
+  padding: 8px 0;
   border: 0;
   border-bottom: 1px rgba(0, 0, 0, 0.2) solid;
   box-sizing: border-box;
@@ -13,4 +13,5 @@
 
 .popup__input:focus {
   outline: none;
+  border-bottom: 1px solid rgb(31, 31, 202);
 }
