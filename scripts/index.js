@@ -8,10 +8,12 @@ let profileName = document.querySelector('.profile__name');
 let profileStatus = document.querySelector('.profile__status');
 
 function togglePopup() {
-  nameInput.value = profileName.textContent;
-  jobInput.value = profileStatus.textContent;
-
-  popupWindow.classList.toggle('popup_is-active');
+  popupWindow.classList.toggle('popup_is-active'); {
+    if (popupWindow.classList.contains('popup_is-active')) {
+      nameInput.value = profileName.textContent;
+      jobInput.value = profileStatus.textContent;
+    }
+  }
 }
 
 function formSubmitHandler (evt) {
@@ -26,4 +28,3 @@ function formSubmitHandler (evt) {
 editBtn.addEventListener('click', togglePopup);
 closeBtn.addEventListener('click', togglePopup);
 formElement.addEventListener('submit', formSubmitHandler);
-
