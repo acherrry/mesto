@@ -97,6 +97,7 @@ function getPlaceElement(name, link) {
   let placeElement = placeTemplate.querySelector('.place').cloneNode(true);
   placeElement.querySelector('.place__name').textContent = name;
   placeElement.querySelector('.place__img').src = link;
+  placeElement.querySelector('.place__img').alt = name;
   const likeBtn = placeElement.querySelector('.place__like-button');
   const deleteBtn = placeElement.querySelector('.place__delete-button');
   let reviewPlace = placeElement.querySelector('.place__img');
