@@ -45,13 +45,16 @@ let initialCards = [
   }
 ];
 
-nameInput.value = profileName.textContent;
-jobInput.value = profileStatus.textContent;
+function setProfileInput() {
+  nameInput.value = profileName.textContent;
+  jobInput.value = profileStatus.textContent;
+}
 
 function openPopup(popupElement) {
   popupElement.classList.add('popup_is-active');
 }
 editBtn.addEventListener('click', function () {
+  setProfileInput();
   openPopup(popupWindowEdit);
 });
 addBtn.addEventListener('click', function () {
@@ -71,29 +74,41 @@ closeBtnWindowReviewPlace.addEventListener('click', function () {
   closePopup(popupWindowReviewPlace);
 });
 
+function activateLikeBtn(evt) {
+  evt.target.classList.toggle('place__like-button_active');
+}
+
+function removePlaceElement(evt) {
+  return evt.target.closest('.place');
+}
+
+function displayPlaceImg(name, link) {
+  popupWindowReviewPlace.querySelector('.popup__img').src = link;
+  popupWindowReviewPlace.querySelector('.popup__img').alt = name;
+  popupWindowReviewPlace.querySelector('.popup__text').textContent = name;
+  openPopup(popupWindowReviewPlace);
+}
+
+const displayPlaceImgListener = function () {
+  return () => displayPlaceImg(initialCards);
+}
+
 function getPlaceElement(name, link) {
   let placeElement = placeTemplate.querySelector('.place').cloneNode(true);
   placeElement.querySelector('.place__name').textContent = name;
   placeElement.querySelector('.place__img').src = link;
-
   const likeBtn = placeElement.querySelector('.place__like-button');
-  likeBtn.addEventListener('click', function (evt) {
-    evt.target.classList.toggle('place__like-button_active');
-  });
-
   const deleteBtn = placeElement.querySelector('.place__delete-button');
-  deleteBtn.addEventListener('click', function () {
-    const placeElement = deleteBtn.closest('.place');
-    placeElement.remove();
+  let reviewPlace = placeElement.querySelector('.place__img');
+
+  likeBtn.addEventListener('click', activateLikeBtn);
+  deleteBtn.addEventListener('click', (evt) => {
+    removePlaceElement(evt).remove();
+  });
+  reviewPlace.addEventListener('click', () => {
+    displayPlaceImg(name, link);
   });
 
-  let reviewPlace = placeElement.querySelector('.place__img');
-  reviewPlace.addEventListener('click', function () {
-    popupWindowReviewPlace.querySelector('.popup__img').src = link;
-    popupWindowReviewPlace.querySelector('.popup__img').alt = name;
-    popupWindowReviewPlace.querySelector('.popup__text').textContent = name;
-    openPopup(popupWindowReviewPlace);
-  });
   return placeElement;
 }
 
@@ -104,7 +119,6 @@ function formSubmitHandlerAdd (evt) {
   linkInput.value = linkInput.textContent;
   closePopup(popupWindowAdd);
 }
-formElementAdd.addEventListener('submit', formSubmitHandlerAdd);
 
 function formSubmitHandlerEdit (evt) {
   evt.preventDefault();
@@ -112,7 +126,9 @@ function formSubmitHandlerEdit (evt) {
   profileStatus.textContent = jobInput.value;
   closePopup(popupWindowEdit);
 }
+
 formElementEdit.addEventListener('submit', formSubmitHandlerEdit);
+formElementAdd.addEventListener('submit', formSubmitHandlerAdd);
 
 initialCards.forEach(function (element) {
   placesList.append(getPlaceElement(element.name, element.link));
