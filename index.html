@@ -29,54 +29,7 @@
 
       <section class="places">
         <ul class="places__list">
-          <li class="place">
-            <img class="place__img" src="./images/place/__img/place-krym.jpg" alt="Крым, тропа Голицина">
-            <div class="place__info">
-              <h2 class="place__name">Крым</h2>
-              <button class="place__like-button place__like-button_active" type="button" aria-label="Выразить оценку - нравится"></button>
-            </div>
-          </li>
-
-          <li class="place">
-            <img class="place__img" src="./images/place/__img/place-kareliya.jpg" alt="Водопад в Сегеже">
-            <div class="place__info">
-              <h2 class="place__name">Карелия</h2>
-              <button class="place__like-button place__like-button_active" type="button" aria-label="Выразить оценку - нравится"></button>
-            </div>
-          </li>
-
-          <li class="place">
-            <img class="place__img" src="./images/place/__img/place-teriberka.jpg" alt="Териберка, Баренцево море">
-            <div class="place__info">
-              <h2 class="place__name">Териберка</h2>
-              <button class="place__like-button place__like-button_active" type="button" aria-label="Выразить оценку - нравится"></button>
-            </div>
-           </li>
-
-          <li class="place">
-            <img class="place__img" src="./images/place/__img/place-dagestan.jpg" alt="Дагестан">
-            <div class="place__info">
-             <h2 class="place__name">Дагестан</h2>
-             <button class="place__like-button place__like-button_active" type="button" aria-label="Выразить оценку - нравится"></button>
-            </div>
-         </li>
-
-         <li class="place">
-           <img class="place__img" src="./images/place/__img/place-pyatigorsk.jpg" alt="Пятигорск, гора Бештау">
-           <div class="place__info">
-             <h2 class="place__name">Пятигорск</h2>
-            <button class="place__like-button place__like-button_active" type="button" aria-label="Выразить оценку - нравится"></button>
-           </div>
-          </li>
-
-          <li class="place">
-            <img class="place__img" src="./images/place/__img/place-dzhily-su.jpg" alt="Карачаево-Черкесия, местечко Джилы-Су">
-            <div class="place__info">
-              <h2 class="place__name">Карачаево-Черкесия</h2>
-              <button class="place__like-button place__like-button_active" type="button" aria-label="Выразить оценку - нравится"></button>
-            </div>
-          </li>
-         </ul>
+        </ul> 
       </section>
     </main>
 
@@ -84,7 +37,7 @@
       <p class="footer__copyright">&copy; 2022 Mesto Russia</p>
     </footer>
 
-    <div class="popup">
+    <div class="popup popup_edit-profile">
       <div class="popup__content">
         <button class="popup__close" type="button"></button>
         <h2 class="popup__title">Редактировать профиль</h2>
@@ -96,7 +49,38 @@
       </div>
     </div>
 
+    <div class="popup popup_add-new-item">
+      <div class="popup__content">
+        <button class="popup__close" type="button"></button>
+        <h2 class="popup__title">Новое место</h2>
+        <form class="popup__form" name="addnewitem">
+          <input class="popup__input" type="text" id="place-name" name="place-name" required placeholder="Название">
+          <input class="popup__input" type="url" id="place-link" name="place-link" required placeholder="Ссылка на картинку">
+          <button class="popup__save" type="submit" aria-label="Создать">Создать</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="popup popup_review-place">
+      <div class="popup__content popup__content_place">
+        <button class="popup__close" type="button"></button>
+        <img class="popup__img">
+        <p class="popup__text"></p>
+      </div>
+    </div>
+
   </div>
+
+  <template id="place-template">
+    <li class="place">
+      <img class="place__img">
+      <div class="place__info">
+        <h2 class="place__name"></h2>
+        <button class="place__like-button" type="button" aria-label="Выразить оценку - нравится"></button>
+      </div>
+      <button class="place__delete-button" type="button" aria-label="Удалить"></button>
+    </li>
+  </template>
   
   <script src="./scripts/index.js"></script>
 </body>
