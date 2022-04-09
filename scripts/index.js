@@ -4,6 +4,7 @@ const formAdd = document.querySelector('.popup__form_add');
 const popupWindowEdit = document.querySelector('.popup_edit-profile');
 const popupWindowAdd = document.querySelector('.popup_add-new-item');
 const popupWindowReviewPlace = document.querySelector('.popup_review-place');
+const popupImg = popupWindowReviewPlace.querySelector('.popup__img');
 const btnCloseWindowEdit = popupWindowEdit.querySelector('.popup__close');
 const btnCloseWindowAdd = popupWindowAdd.querySelector('.popup__close');
 const btnCloseWindowReviewPlace = popupWindowReviewPlace.querySelector('.popup__close');
@@ -79,7 +80,6 @@ function activatebtnLike(evt) {
 }
 
 function displayPlaceImg(name, link) {
-  const popupImg = popupWindowReviewPlace.querySelector('.popup__img');
   popupImg.src = link;
   popupImg.alt = name;
   popupWindowReviewPlace.querySelector('.popup__text').textContent = name;
@@ -94,14 +94,13 @@ function getPlaceElement(name, link) {
   placeImg.alt = name;
   const btnLike = placeElement.querySelector('.place__like-button');
   const btnDelete = placeElement.querySelector('.place__delete-button');
-  const reviewPlace = placeElement.querySelector('.place__img');
 
   btnLike.addEventListener('click', activatebtnLike);
   btnDelete.addEventListener('click', function (evt) {
     evt.target.closest('.place');
     placeElement.remove();
   });
-  reviewPlace.addEventListener('click', () => {
+  placeImg.addEventListener('click', () => {
     displayPlaceImg(name, link);
   });
 
@@ -111,8 +110,8 @@ function getPlaceElement(name, link) {
 function formSubmitHandlerAdd (evt) {
   evt.preventDefault();
   placesList.prepend(getPlaceElement(namePlaceInput.value, linkInput.value));
-  formAdd.reset();
   closePopup(popupWindowAdd);
+  formAdd.reset();
 }
 
 function formSubmitHandlerEdit (evt) {
