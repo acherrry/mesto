@@ -1,24 +1,24 @@
-const editBtn = document.querySelector('.profile__edit-button');
-const addBtn = document.querySelector('.profile__add-button');
-const popupElement = document.querySelector('.popup');
+const btnEdit = document.querySelector('.profile__edit-button');
+const btnAdd = document.querySelector('.profile__add-button');
+const formAdd = document.querySelector('.popup__form_add');
 const popupWindowEdit = document.querySelector('.popup_edit-profile');
 const popupWindowAdd = document.querySelector('.popup_add-new-item');
 const popupWindowReviewPlace = document.querySelector('.popup_review-place');
-const closeBtnWindowEdit = popupWindowEdit.querySelector('.popup__close');
-const closeBtnWindowAdd = popupWindowAdd.querySelector('.popup__close');
-const closeBtnWindowReviewPlace = popupWindowReviewPlace.querySelector('.popup__close');
+const btnCloseWindowEdit = popupWindowEdit.querySelector('.popup__close');
+const btnCloseWindowAdd = popupWindowAdd.querySelector('.popup__close');
+const btnCloseWindowReviewPlace = popupWindowReviewPlace.querySelector('.popup__close');
 const formElementEdit = popupWindowEdit.querySelector('.popup__form');
 const formElementAdd = popupWindowAdd.querySelector('.popup__form');
 const placeTemplate = document.querySelector('#place-template').content;
-let nameInput = popupWindowEdit.querySelector('#user-name');
-let jobInput = popupWindowEdit.querySelector('#user-info');
-let namePlaceInput = popupWindowAdd.querySelector('#place-name');
-let linkInput = popupWindowAdd.querySelector('#place-link');
-let profileName = document.querySelector('.profile__name');
-let profileStatus = document.querySelector('.profile__status');
-let placesList = document.querySelector('.places__list');
+const nameInput = popupWindowEdit.querySelector('#user-name');
+const jobInput = popupWindowEdit.querySelector('#user-info');
+const namePlaceInput = popupWindowAdd.querySelector('#place-name');
+const linkInput = popupWindowAdd.querySelector('#place-link');
+const profileName = document.querySelector('.profile__name');
+const profileStatus = document.querySelector('.profile__status');
+const placesList = document.querySelector('.places__list');
 
-let initialCards = [
+const initialCards = [
   {
     name: 'Крым',
     link: 'https://sun9-25.userapi.com/impf/TIqHi048XAXRwEdJfFEenR8qXzriVDT2HQnq9A/G4pEeTBryio.jpg?size=1080x810&quality=96&sign=aced6117e0633c2fbb01156765dfda78&type=album'
@@ -51,60 +51,55 @@ function setProfileInput() {
 }
 
 function openPopup(popupElement) {
-  popupElement.classList.add('popup_is-active');
+  popupElement.classList.add('popup_opened');
 }
-editBtn.addEventListener('click', function () {
+btnEdit.addEventListener('click', function () {
   setProfileInput();
   openPopup(popupWindowEdit);
 });
-addBtn.addEventListener('click', function () {
+btnAdd.addEventListener('click', function () {
   openPopup(popupWindowAdd);
 });
 
 function closePopup(popupElement) {
-  popupElement.classList.remove('popup_is-active');
+  popupElement.classList.remove('popup_opened');
 }
-closeBtnWindowEdit.addEventListener('click', function () {
+btnCloseWindowEdit.addEventListener('click', function () {
   closePopup(popupWindowEdit);
 });
-closeBtnWindowAdd.addEventListener('click', function () {
+btnCloseWindowAdd.addEventListener('click', function () {
   closePopup(popupWindowAdd);
 });
-closeBtnWindowReviewPlace.addEventListener('click', function () {
+btnCloseWindowReviewPlace.addEventListener('click', function () {
   closePopup(popupWindowReviewPlace);
 });
 
-function activateLikeBtn(evt) {
+function activatebtnLike(evt) {
   evt.target.classList.toggle('place__like-button_active');
 }
 
-function removePlaceElement(evt) {
-  return evt.target.closest('.place');
-}
-
 function displayPlaceImg(name, link) {
-  popupWindowReviewPlace.querySelector('.popup__img').src = link;
-  popupWindowReviewPlace.querySelector('.popup__img').alt = name;
+  const popupImg = popupWindowReviewPlace.querySelector('.popup__img');
+  popupImg.src = link;
+  popupImg.alt = name;
   popupWindowReviewPlace.querySelector('.popup__text').textContent = name;
   openPopup(popupWindowReviewPlace);
 }
 
-const displayPlaceImgListener = function () {
-  return () => displayPlaceImg(initialCards);
-}
-
 function getPlaceElement(name, link) {
-  let placeElement = placeTemplate.querySelector('.place').cloneNode(true);
+  const placeElement = placeTemplate.querySelector('.place').cloneNode(true);
   placeElement.querySelector('.place__name').textContent = name;
-  placeElement.querySelector('.place__img').src = link;
-  placeElement.querySelector('.place__img').alt = name;
-  const likeBtn = placeElement.querySelector('.place__like-button');
-  const deleteBtn = placeElement.querySelector('.place__delete-button');
-  let reviewPlace = placeElement.querySelector('.place__img');
+  const placeImg = placeElement.querySelector('.place__img');
+  placeImg.src = link;
+  placeImg.alt = name;
+  const btnLike = placeElement.querySelector('.place__like-button');
+  const btnDelete = placeElement.querySelector('.place__delete-button');
+  const reviewPlace = placeElement.querySelector('.place__img');
 
-  likeBtn.addEventListener('click', activateLikeBtn);
-  deleteBtn.addEventListener('click', (evt) => {
-    removePlaceElement(evt).remove();
+  btnLike.addEventListener('click', activatebtnLike);
+  btnDelete.addEventListener('click', function (evt) {
+    evt.target.closest('.place');
+    placeElement.remove();
   });
   reviewPlace.addEventListener('click', () => {
     displayPlaceImg(name, link);
@@ -116,8 +111,7 @@ function getPlaceElement(name, link) {
 function formSubmitHandlerAdd (evt) {
   evt.preventDefault();
   placesList.prepend(getPlaceElement(namePlaceInput.value, linkInput.value));
-  namePlaceInput.value = namePlaceInput.textContent;
-  linkInput.value = linkInput.textContent;
+  formAdd.reset();
   closePopup(popupWindowAdd);
 }
 

@@ -1,4 +1,4 @@
-.popup_is-active {
+.popup_opened {
   visibility: visible;
   opacity: 1;
 }
