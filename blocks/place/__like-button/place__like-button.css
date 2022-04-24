@@ -11,12 +11,12 @@
   flex-shrink: 0;
 }
 
-.place__like-button:hover {
-  opacity: 0.5;
-}
-
 .place__like-button:active {
   outline: none;
+}
+
+.place__like-button:hover {
+  opacity: 0.5;
 }
 
 @media screen and (max-width: 467px) {
