@@ -112,7 +112,7 @@ function onEscClose (evt) {
 }
 
 popupWindows.forEach(function (popupWindow) {
-  popupWindow.addEventListener('click', function (evt) {
+  popupWindow.addEventListener('mousedown', function (evt) {
     onOverlayClose (evt, popupWindow);
   });
 });
