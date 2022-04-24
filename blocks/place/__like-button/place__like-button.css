@@ -9,11 +9,15 @@
   cursor: pointer;
   transition: opacity 0.2s linear;
   flex-shrink: 0;
-  outline: none;
 }
 
 .place__like-button:hover {
   opacity: 0.5;
+}
+
+.place__like-button:focus {
+  opacity: 0.5;
+  outline: 0;
 }
 
 @media screen and (max-width: 467px) {
