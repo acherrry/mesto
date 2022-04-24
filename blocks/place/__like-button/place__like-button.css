@@ -9,6 +9,7 @@
   cursor: pointer;
   transition: opacity 0.2s linear;
   flex-shrink: 0;
+  outline: none;
 }
 
 .place__like-button:hover {
