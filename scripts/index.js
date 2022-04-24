@@ -1,5 +1,7 @@
 const btnEdit = document.querySelector('.profile__edit-button');
 const btnAdd = document.querySelector('.profile__add-button');
+const popupWindows = document.querySelectorAll('.popup');
+const formEdit = document.querySelector('.popup__form_edit');
 const formAdd = document.querySelector('.popup__form_add');
 const popupWindowEdit = document.querySelector('.popup_edit-profile');
 const popupWindowAdd = document.querySelector('.popup_add-new-item');
@@ -53,17 +55,37 @@ function setProfileInput() {
 
 function openPopup(popupElement) {
   popupElement.classList.add('popup_opened');
+  document.addEventListener('keydown', onEscClose);
 }
 btnEdit.addEventListener('click', function () {
   setProfileInput();
+  resetInputErrors(formEdit, {
+    formSelector: '.popup__form',
+    inputSelector: '.popup__input',
+    submitButtonSelector: '.popup__save',
+    inactiveButtonClass: 'popup__save_disabled',
+    inputErrorClass: 'popup__input_type_error',
+    errorClass: 'popup__error_visible'
+  });
   openPopup(popupWindowEdit);
 });
 btnAdd.addEventListener('click', function () {
+  namePlaceInput.value = '';
+  linkInput.value = '';
+  resetInputErrors(formAdd, {
+    formSelector: '.popup__form',
+    inputSelector: '.popup__input',
+    submitButtonSelector: '.popup__save',
+    inactiveButtonClass: 'popup__save_disabled',
+    inputErrorClass: 'popup__input_type_error',
+    errorClass: 'popup__error_visible'
+  });
   openPopup(popupWindowAdd);
 });
 
 function closePopup(popupElement) {
   popupElement.classList.remove('popup_opened');
+  document.removeEventListener('keydown', onEscClose);
 }
 btnCloseWindowEdit.addEventListener('click', function () {
   closePopup(popupWindowEdit);
@@ -73,6 +95,26 @@ btnCloseWindowAdd.addEventListener('click', function () {
 });
 btnCloseWindowReviewPlace.addEventListener('click', function () {
   closePopup(popupWindowReviewPlace);
+});
+
+function onOverlayClose (evt, popupWindow) {
+  if (evt.target === evt.currentTarget) {
+    closePopup(popupWindow);
+  }
+}
+
+function onEscClose (evt) {
+  const escCode = 'Escape';
+  const openPopupWin = document.querySelector('.popup_opened');
+  if (evt.key === escCode) {
+    closePopup(openPopupWin);
+    }
+}
+
+popupWindows.forEach(function (popupWindow) {
+  popupWindow.addEventListener('click', function (evt) {
+    onOverlayClose (evt, popupWindow);
+  });
 });
 
 function activatebtnLike(evt) {
@@ -111,7 +153,6 @@ function formSubmitHandlerAdd (evt) {
   evt.preventDefault();
   placesList.prepend(getPlaceElement(namePlaceInput.value, linkInput.value));
   closePopup(popupWindowAdd);
-  formAdd.reset();
 }
 
 function formSubmitHandlerEdit (evt) {
