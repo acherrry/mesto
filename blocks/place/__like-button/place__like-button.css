@@ -15,7 +15,7 @@
   opacity: 0.5;
 }
 
-.place__like-button:focus {
+.place__like-button:active {
   outline: none;
 }
 
