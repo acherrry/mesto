@@ -1,3 +1,12 @@
+const validationData = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__save',
+  inactiveButtonClass: 'popup__save_disabled',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__error_visible'
+}
+
 const showInputError = (input, config) => {
   const errorNode = document.querySelector(`#${input.id}-error`);
   errorNode.textContent = input.validationMessage;
@@ -46,11 +55,4 @@ function resetInputErrors(form, config) {
 }
 
 
-enableValidation({
-  formSelector: '.popup__form',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__save',
-  inactiveButtonClass: 'popup__save_disabled',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__error_visible'
-});
+enableValidation(validationData);
