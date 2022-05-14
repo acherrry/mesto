@@ -1,4 +1,4 @@
-const initialCards = [
+export const initialCards = [
   {
     name: 'Крым',
     link: 'https://sun9-25.userapi.com/impf/TIqHi048XAXRwEdJfFEenR8qXzriVDT2HQnq9A/G4pEeTBryio.jpg?size=1080x810&quality=96&sign=aced6117e0633c2fbb01156765dfda78&type=album'
