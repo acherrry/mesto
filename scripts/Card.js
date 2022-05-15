@@ -31,14 +31,14 @@ export class Card {
   }
 
   _setEventListeners() {
-    const btnDelete = this._element.querySelector('.place__delete-button');
-    btnDelete.addEventListener('click', () => {
+    this._btnDelete = this._element.querySelector('.place__delete-button');
+    this._btnDelete.addEventListener('click', () => {
       this._removeCard();
     });
 
-    const btnLike = this._element.querySelector('.place__like-button');
-    btnLike.addEventListener('click', () => {
-      this._activateBtnLike(btnLike);
+    this._btnLike = this._element.querySelector('.place__like-button');
+    this._btnLike.addEventListener('click', () => {
+      this._activateBtnLike(this._btnLike);
     });
 
     this._placeImg.addEventListener('click', () => {
@@ -48,9 +48,10 @@ export class Card {
 
   _removeCard() {
     this._element.remove();
+    this._element = null;
   }
 
-  _activateBtnLike(evt) {
-    evt.classList.toggle('place__like-button_active');
+  _activateBtnLike() {
+    this._btnLike.classList.toggle('place__like-button_active');
   }
 }

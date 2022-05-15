@@ -10,9 +10,7 @@ const popupWindowEdit = document.querySelector('.popup_edit-profile');
 const popupWindowAdd = document.querySelector('.popup_add-new-item');
 const popupWindowReviewPlace = document.querySelector('.popup_review-place');
 const popupImg = popupWindowReviewPlace.querySelector('.popup__img');
-const btnCloseWindowEdit = popupWindowEdit.querySelector('.popup__close');
-const btnCloseWindowAdd = popupWindowAdd.querySelector('.popup__close');
-const btnCloseWindowReviewPlace = popupWindowReviewPlace.querySelector('.popup__close');
+const popupText = popupWindowReviewPlace.querySelector('.popup__text');
 const formElementEdit = popupWindowEdit.querySelector('.popup__form');
 const formElementAdd = popupWindowAdd.querySelector('.popup__form');
 const nameInput = popupWindowEdit.querySelector('#user-name');
@@ -75,25 +73,15 @@ function closePopup(popupElement) {
   popupElement.classList.remove('popup_opened');
   document.removeEventListener('keydown', onEscClose);
 }
-btnCloseWindowEdit.addEventListener('click', function () {
-  closePopup(popupWindowEdit);
-});
-btnCloseWindowAdd.addEventListener('click', function () {
-  closePopup(popupWindowAdd);
-});
-btnCloseWindowReviewPlace.addEventListener('click', function () {
-  closePopup(popupWindowReviewPlace);
-});
 
-function onOverlayClose (evt, popupWindow) {
-  if (evt.target === evt.currentTarget) {
+function onOverlayAndButtonClose (evt, popupWindow) {
+  if (evt.target === evt.currentTarget || evt.target.classList.contains('popup__close')) {
     closePopup(popupWindow);
   }
 }
 
 function onEscClose (evt) {
-  const escCode = 'Escape';
-  if (evt.key === escCode) {
+  if (evt.key === 'Escape') {
     const openPopupWin = document.querySelector('.popup_opened');
     closePopup(openPopupWin);
     }
@@ -101,14 +89,14 @@ function onEscClose (evt) {
 
 popupWindows.forEach(function (popupWindow) {
   popupWindow.addEventListener('mousedown', function (evt) {
-    onOverlayClose (evt, popupWindow);
+    onOverlayAndButtonClose (evt, popupWindow);
   });
 });
 
 function displayPlaceImg(name, link) {
   popupImg.src = link;
   popupImg.alt = name;
-  popupWindowReviewPlace.querySelector('.popup__text').textContent = name;
+  popupText.textContent = name;
   openPopup(popupWindowReviewPlace);
 }
 

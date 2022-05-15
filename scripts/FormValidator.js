@@ -5,27 +5,28 @@ export class FormValidator {
     this._inactiveButtonClass = validationData.inactiveButtonClass;
     this._inputErrorClass = validationData.inputErrorClass;
     this._errorClass = validationData.errorClass;
-    this._formElement = formElement
+    this._formElement = formElement;
+    this._submitButton = this._formElement.querySelector(this._submitButtonSelector);
+    this._inputs = this._formElement.querySelectorAll(this._inputSelector)
   }
 
   _toggleButton() {
-    const submitButton = this._formElement.querySelector('.popup__save');
-    submitButton.disabled = !this._formElement.checkValidity();
-    submitButton.classList.toggle(this._inactiveButtonClass, !this._formElement.checkValidity());
+    this._submitButton.disabled = !this._formElement.checkValidity();
+    this._submitButton.classList.toggle(this._inactiveButtonClass, !this._formElement.checkValidity());
   }
 
   _showInputError(input) {
     const errorNode = this._formElement.querySelector(`#${input.id}-error`);
     errorNode.textContent = input.validationMessage;
-    errorNode.classList.add('popup__error_visible');
-    input.classList.add('popup__input_type_error');
+    errorNode.classList.add(this.errorClass);
+    input.classList.add(this._inputErrorClass);
   }
 
   _hideInputError(input) {
     const errorNode = this._formElement.querySelector(`#${input.id}-error`);
     errorNode.textContent = '';
-    errorNode.classList.remove('popup__error_visible');
-    input.classList.remove('popup__input_type_error');
+    errorNode.classList.remove(this.errorClass);
+    input.classList.remove(this._inputErrorClass);
   }
 
   _handleFormInput(input) {
@@ -38,8 +39,7 @@ export class FormValidator {
   }
 
   resetInputErrors() {
-    const inputs = this._formElement.querySelectorAll('.popup__input');
-    inputs.forEach((input) => {
+    this._inputs.forEach((input) => {
       this._hideInputError(input);
     });
     this._toggleButton();
