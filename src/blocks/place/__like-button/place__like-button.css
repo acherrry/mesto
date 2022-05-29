@@ -1,5 +1,5 @@
 .place__like-button {
-  background: transparent url(../../../images/place/__like-button/like-button-disabled.svg) no-repeat center;
+  background: transparent url(../../../../src/images/place/__like-button/like-button-disabled.svg) no-repeat center;
   background-repeat: no-repeat;
   background-position: center;
   border: none;

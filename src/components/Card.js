@@ -1,9 +1,9 @@
-export class Card {
-  constructor(place, cardSelector, handleClickToPhoto) {
+export default class Card {
+  constructor(place, cardSelector, handleCardClick) {
     this._name = place.name;
     this._link = place.link;
     this._cardSelector = cardSelector;
-    this._handleClickToPhoto = handleClickToPhoto
+    this._handleCardClick = handleCardClick
   }
 
   _getTemplate() {
@@ -38,11 +38,11 @@ export class Card {
 
     this._btnLike = this._element.querySelector('.place__like-button');
     this._btnLike.addEventListener('click', () => {
-      this._activateBtnLike(this._btnLike);
+      this._activateBtnLike();
     });
 
     this._placeImg.addEventListener('click', () => {
-      this._handleClickToPhoto(this._name, this._link);
+      this._handleCardClick();
     });
   }
 
