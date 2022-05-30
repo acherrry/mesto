@@ -1,7 +1,7 @@
 import '../pages/index.css';
 
 import Card from '../components/Card.js';
-import { initialCards } from '../components/data.js';
+import { initialCards } from '../utils/data.js';
 import FormValidator from '../components/FormValidator.js';
 import Section from '../components/Section';
 import PopupWithImage from '../components/PopupWithImage';
@@ -16,8 +16,6 @@ const formElementEdit = popupWindowEdit.querySelector('.popup__form');
 const formElementAdd = popupWindowAdd.querySelector('.popup__form');
 const nameInput = popupWindowEdit.querySelector('#user-name');
 const jobInput = popupWindowEdit.querySelector('#user-info');
-const namePlaceInput = popupWindowAdd.querySelector('#place-name');
-const linkInput = popupWindowAdd.querySelector('#place-link');
 
 function getCard (cardData) {
   const cardPlace = new Card(cardData, '.place-template', () => {popupImage.open(cardData)});
@@ -54,7 +52,7 @@ const profileFormValidator = new FormValidator(validationData,  formElementEdit)
 cardAddFormValidator.enableValidation();
 profileFormValidator.enableValidation();
 
-const profileInfo = new UserInfo({ profileNameSelector: '.profile__name', profileInfoSelector:'.profile__status'});
+const profileInfo = new UserInfo({profileNameSelector: '.profile__name', profileInfoSelector:'.profile__status'});
 
 btnEdit.addEventListener('click', () => {
   const nameAndInfoUserObject = profileInfo.getUserInfo();
@@ -69,14 +67,10 @@ btnAdd.addEventListener('click', () => {
   popupAdd.open();
 });
 
-function handleAddCardFormSubmit () {
-  const placeHandlerObject = {
-    name: namePlaceInput.value, 
-    link: linkInput.value
-  }
-  cardsList.addItem(getCard(placeHandlerObject));
+function handleAddCardFormSubmit(nameAndLinkObject) {
+cardsList.addItem(getCard({name: nameAndLinkObject["place-name"], link: nameAndLinkObject["place-link"]}))
 }
 
-function handleProfileEditFormSubmit () {
-  profileInfo.setUserInfo(nameInput.value, jobInput.value)
+function handleProfileEditFormSubmit(nameAndInfoObject) {
+  profileInfo.setUserInfo(nameAndInfoObject["user-name"], nameAndInfoObject["user-info"]);
 }
