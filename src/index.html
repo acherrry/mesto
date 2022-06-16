@@ -16,11 +16,13 @@
     <main class="content">
       <section class="profile">
         <div class="profile__info">
-          <img class="profile__img" src="<%=require('./images/profile/__img/profile-img.jpg')%>" alt="Фотография пользователя">
+          <a class="profile__avatar">
+            <img class="profile__img" src="/" href="#" alt="Фотография пользователя">
+          </a>
           <div class="profile__personal-data">
-            <h1 class="profile__name">Жак-Ив Кусто</h1>
+            <h1 class="profile__name"></h1>
             <button class="profile__edit-button" type="button" aria-label="Редактировать"></button>
-            <p class="profile__status">Исследователь океана</p>
+            <p class="profile__status"></p>
           </div>
         </div>
         <button class="profile__add-button" type="button" aria-label="Добавить"></button>
@@ -106,6 +108,14 @@
       </div>
     </div>
 
+    <div class="popup popup_deletion-confirmation">
+      <div class="popup__content">
+        <button class="popup__close" type="button"></button>
+        <h2 class="popup__title popup__title_deletion-confirmation">Вы уверены?</h2>
+        <button class="popup__save popup__save_deletion-confirmation" type="button">Да</button>
+      </div>
+    </div>
+
     <div class="popup popup_review-place">
       <div class="popup__content popup__content_place">
         <button class="popup__close" type="button"></button>
@@ -114,6 +124,28 @@
       </div>
     </div>
 
+    <div class="popup popup_update-avatar-form">
+      <div class="popup__content">
+        <button class="popup__close" type="button"></button>
+        <h2 class="popup__title popup__title_update-avatar-form">Обновить аватар</h2>
+        <form class="popup__form popup__update-avatar-form" name="addnewphotouser" novalidate>
+          <label class="popup__field">
+            <input 
+            required
+            class="popup__input" 
+            type="url" 
+            id="user-photo-link" 
+            name="user-photo-link"  
+            placeholder="Ссылка на новый аватар"
+            >
+            <span class="popup__error" id="user-photo-link-error"></span>
+          </label>
+          <button class="popup__save" type="submit" aria-label="Создать">Кот</button>
+        </form>
+      </div>
+    </div>
+
+
   </div>
 
   <template id="place-template" class="place-template">
@@ -121,7 +153,10 @@
       <img class="place__img" src="/" alt="">
       <div class="place__info">
         <h2 class="place__name"></h2>
-        <button class="place__like-button" type="button" aria-label="Выразить оценку - нравится"></button>
+        <div class="place__like">
+          <button class="place__like-button" type="button" aria-label="Выразить оценку - нравится"></button>
+          <p class="place__number-of-likes"></p>
+        </div>
       </div>
       <button class="place__delete-button" type="button" aria-label="Удалить"></button>
     </li>

@@ -10,7 +10,7 @@ export default class PopupWithImage extends Popup {
   open(place) {
     super.open();
     this._popupWindowReviewPlaceImage.src = place.link;
-    this._popupWindowReviewPlaceText.alt = place.name;
+    this._popupWindowReviewPlaceImage.alt = place.name;
     this._popupWindowReviewPlaceText.textContent = place.name;
   }
 }
