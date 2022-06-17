@@ -11,7 +11,6 @@ export const nameInput = popupWindowEdit.querySelector('#user-name');
 export const jobInput = popupWindowEdit.querySelector('#user-info');
 
 export const validationData = {
-  formSelector: '.popup__form',
   inputSelector: '.popup__input',
   submitButtonSelector: '.popup__save',
   inactiveButtonClass: 'popup__save_disabled',
