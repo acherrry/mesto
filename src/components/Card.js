@@ -35,18 +35,22 @@ export default class Card {
     this._placeImg.alt = this._name;
     this._placeImg.src = this._link;
     this._placeName.textContent = this._name;
+    this.updateLikes(myId);
+    return this._element;
+  }
+
+  updateLikes(myId) {
     this._numberOfLikes.textContent = this._likes.length;
     if (this._likes.find(userObject => userObject._id == myId) !== undefined) {
       this._btnLike.classList.add('place__like-button_active');
     } else {
       this._btnLike.classList.remove('place__like-button_active');
     }
-    return this._element;
   }
-
+  
   setLikesLength(userId, userlikes) {
     this._likes = userlikes;
-    this.generateCard(userId);
+    this.updateLikes(userId);
   }
 
   getIdCard() {
